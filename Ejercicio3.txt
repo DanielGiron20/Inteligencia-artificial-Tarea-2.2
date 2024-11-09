@@ -1,0 +1,42 @@
+ --- CASO DE EVALUACION ---
+Su empresa se dedica a recibir dispositivos para repararlos. En algunos casos, no
+se puede reparar y deben solicitar un dispositivo nuevo. Cuentan con una base de
+datos muy grande donde se registra el estado de cada componente del dispositivo,
+y un dato final indicando si pudo repararse o si fue necesario solicitar un dispostivo
+nuevo.
+Le solicitan que haga y entrene un modelo con esos datos, para que al final se
+ingresen los datos de los componentes, y muestre una predicción indicando si el
+dispostivo puede repararse, o si debe solicitarse uno nuevo.
+Responda a las siguientes preguntas:
+
+• ¿Qué tipo de modelo aplicaría?
+R// Como lo que se busca responder es [Si se puede], [No se puede] se precisa de una clasificacion, por tanto se necesita
+un modelo de clasificacion, Esta el arbol de decision, la regresion logistica, las maquinas de vectores de soporte, como el arbol de decision
+es mas sencillo de modelar y puede manejar tanto variables categoricas como numericas entre los factores que se evaluarian al saber si un dispositivo es reparable 
+se considerarian ambos tipo de variables
+
+• ¿Por qué consideras que ese modelo es adecuado?
+R//Como al dibujar el arbol de decision podemos leer el analisis de principio a fin es sencillo de comprender y disenar
+maneja tanto valores categoricos como numericos, su metodo de division simplifica la clasificacion y la hace mas precisa 
+ademas que su ajuste es bastante flexible, como podar el arbol sintetizando la cantidad de ramas, ajustando la profundidad
+
+Ahora ha aplicado algunos algoritmos de machine learning en datos:
+• ¿De qué manera considera que es diferente a la programación regular, para
+este tipo de proyectos?
+R// En que la programacion regular establece algoritmos con metricas e instrucciones especificas que evaluan la informacion mediante instrucciones
+previamente establecidas sin conocer el comportamiento de los datos, en machine learning el enfoque se basa en la identificacion de patrones y en el 
+comportamientode los datos, la programacion regular depende de nuestra logica y forma de fundamentar el analisis y en machine learning la cantidad y
+calidad de los datos define bastante la efectividad del modelo ya que aprende de esos datos, ademas que en la programacion regular buscamos adaptar para 
+todos los datos provistos y en machine learning se intenta generalizar el sistema para datos que no ha visto antes
+
+
+• ¿Por qué cree que los modelos como los vistos en las clases no logran llegar
+a un 100% de respuestas correctas?
+R// Primeramente por los datos, como en el inciso anterior menciono la cantidad y calidad de los datos es clave para el analisis, si los datos contienen
+ruido, muchos valores faltantes o errores el aprendizaje sera pobre, otro motivo puede ser por la complejidad del problema aveces no todos los problemas
+pueden interpretarse con una relacion lineal, puede ser tambien debido al desaprender por un sobreajuste en el modelo como en los arboles de decision al aumentar
+demasiado la profundidad o tener demasiadas ramificaciones, las relaciones aveces en los datos aveces pueden ser no tan sencillos, no lineales sino relaciones
+que requiere de un mayor analisis para tratar los datos y encontrar una correlacion mas singnificativa y por ultimo es posible que como hemos conocido por el momento
+pocos modelos de machine learning pueda que existan modelos de machine learning que sean mas precisos para los problemas vistos en clase, aveces los datos estan bien 
+tratados y es el modelo que no es el mas ideal, como en los ejercicios de la tarea, el ejercicio 1 con regression lineal tiene 93% pero con el arbol de decisiont
+tiene un 98% de precision, exactamente mismos datos pero el modelo entrego mayor o menor precision

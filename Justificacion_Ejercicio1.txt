@@ -1,0 +1,30 @@
+¿El resultado fue mejor o peor?
+R// Durante las evaluaciones para encontrar mayor precision, probe con crear nuevas relaciones, eliminar algunas de las columnas que tenian minima
+casi nula correlacion con la variable que queremos predecir, pero tomando en cuenta lo que nos dejo en la tarea con los valores fijos, inicialmente
+intente clasificarlos de manera binaria con una antiguedad de 0 o 1 pero esto junto a lo demas en vez de aumentar la precision la disminuia al dejar de tomar estos
+valores fijos en cuenta y crear las relaciones: bedrooms_per_room, households_per_populationm, rooms_per_household aumento en un 2% mas la precision
+Pero mediante a el analisis de las graficas de barra aplique transformacion logaritmica con numpy el resultado aumento mucho y claro fue mejor, en el siguiente
+inciso lo justificare como en el codigo
+
+
+¿Por qué crees que es así? Por qué son necesarios los cambios aplicados
+(fundamento del porqué afecta esos cambios)
+R// Al no tomar en cuenta los valores fijos, y tener mas relaciones se pudo reforzar mas los datos entre si pero esto solo incremento un poquitito la precision
+La clave realmente estuvo en la transformacion logaritmica, Por el ajuste a el valor con mayor correlacion con la variable Y que es median_income la correlacion 
+de ambos es de 0.68 cuando no sabia que mas buscarle al ejercicio leyendo las graficas en la mayoria vemos una distribucin asimetrica y recorde algo de la 
+clase de estadistica sobre las distribuciones al haber pocos valores muy altos ya extremos pero muchisimos mas bajos las graficos forman una cola a la derecha 
+una cola de bastantes valores entonces investigando el significado y sus consecuencias es como encontre docuemtacion sobre el problema de la distribucion asimetrica 
+que podria influir de manera incorrecta en el analisis de datos, la forma que lo quise interpretar es que puede reflejar algo que no como si un jugador tuviera 30 goles
+en 20 partidos uno pensaria que 1.5 goles por partido pero realmente metio 15 goles en dos partidos y por eso tiene ese promedio es decir el promedio no es incorrecto pero lo 
+que refleja si (Podria estar siendo deacertado con este ejemplo pero es como lo comprendi) adjunte el link de la pagina donde estuve aprendiendo de esto, segun vi 
+esto podria ser un aspecto a mejorar que podria auentar el porcentaje entonces en numpy documentation encontre que una forma de resolver esa distribucion asimetrica 
+es con la transformacion logaritmica [log1p] [https://numpy.org/doc/stable/reference/generated/numpy.log1p.html] ahi se explica un poco el proceso que hace con cada 
+valor remplzandolo por su logaritmo lo que al aplicarlo sobre median_income y median_house_value y graficar de nuevo ambas columnas 
+este comando: print(datos[['median_house_value', 'median_income']].hist(bins=50, figsize=(20,15), edgecolor='black'))
+#plt.show() esta es la grafica al principio y esta despues: print(datos[['log_median_house_value', 'log_median_income']].hist(bins=50, figsize=(20,15), edgecolor='black'))
+plt.show() paso a tener una distribucion normal como campana de Gauss similar, e instantaneamente note que el score aumento hasta un 93% 
+
+por que son necesarios?
+Con la distribucion asimetrica que tenia los datos que presentan una distribución sesgada, especialmente hacia la derecha, pueden ser transformados para que se asemejen 
+más a una distribución normal, lo que es un supuesto clave en la regresión lineal, este cambio realmente no parte de un analisis tan profundo sino de ese detalle que note 
+en las graficas y recorde por una clase que eso podia presentaba dificultades para establecer una relacion de prediccion
